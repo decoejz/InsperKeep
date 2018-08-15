@@ -14,14 +14,14 @@ body{
 }
 
 .add_button{
-    background-color: red;
-    border: none;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 70px;
-    margin: 4px 2px;
-    cursor: pointer;
+     background-color: red;
+     border: none; 
+     color: white; 
+     padding: 10px; 
+     text-align: center; 
+     text-decoration: none; 
+     display: inline-block; 
+     font-size: 70px; 
+     margin: 4px 2px; 
+     cursor: pointer; 
 }
