@@ -2,6 +2,7 @@ package br.edu.insper;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,16 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class adicionarNota
+ * Servlet implementation class CriaNota
  */
-@WebServlet("/adicionarNota")
-public class adicionarNota extends HttpServlet {
+@WebServlet("/CriaNota")
+public class CriaNota extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public adicionarNota() {
+    public CriaNota() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,19 +28,6 @@ public class adicionarNota extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	PrintWriter out = response.getWriter();
-    	String nome = request.getParameter("title");
-    	String novaNota = request.getParameter("novaNota");
-    	
-    	out.println("<html>");
-    	out.println("<body>");
-    	out.println("Nome: " + nome + "<br>");
-    	out.println("Nota: " + novaNota + "<br>");
-    	out.println("</body>");
-    	out.println("</html>");
-    }
-    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -50,7 +38,29 @@ public class adicionarNota extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		DAO dao;
+		
+		try {
+			dao = new DAO();
+			
+			Nota nota = new Nota();
+			nota.setTitle(request.getParameter("title"));
+			nota.setNote(request.getParameter("novaNota"));
+		
+			dao.adiciona(nota);
+		
+			PrintWriter out = response.getWriter();
+			out.println("<html><body>");
+			out.println("adicionado" + nota.getTitle());
+			out.println("adicionado" + nota.getNote());
+			out.println("</body></html>");
+			
+			dao.close();
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
