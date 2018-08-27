@@ -13,8 +13,8 @@ CREATE TABLE user (
 
 CREATE TABLE nota (
  nota_id INT NOT NULL AUTO_INCREMENT,
- nota TEXT NOT NULL,
- person_id INT,
+ nota_text TEXT NOT NULL,
+ person_id INT NOT NULL,
  PRIMARY KEY (nota_id),
  FOREIGN KEY(person_id) REFERENCES user(user_id)
 );

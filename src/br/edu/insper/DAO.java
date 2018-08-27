@@ -35,7 +35,7 @@ public class DAO {
 			Nota note = new Nota();
 			note.setNoteId(rs.getInt("nota_id"));
 			note.setTitle(rs.getString("titulo"));
-			note.setNote(rs.getString("nota"));
+			note.setNote(rs.getString("nota_text"));
 			
 			//TODO checar como pegar esse id de person que depende do person_id da tabela user
 			note.setPersonId(rs.getInt("person_id"));
@@ -48,12 +48,11 @@ public class DAO {
 	}
 	
 	public void adiciona(Nota nota) throws SQLException {
-		String sql = "INSERT INTO nota" + "(nota_id,titulo,nota,person_id) values(?,?,?,?)";
+		String sql = "INSERT INTO nota" + "(titulo,nota_text,person_id) values(?,?,?)";
 		PreparedStatement stmt = connection.prepareStatement(sql);
-		stmt.setInt(1, nota.getNoteId());
-		stmt.setString(2, nota.getTitle());
-		stmt.setString(3, nota.getNote());
-		stmt.setInt(4, nota.getPersonId());
+		stmt.setString(1, nota.getTitle());
+		stmt.setString(2, nota.getNote());
+		stmt.setInt(3, nota.getPersonId());
 		stmt.execute();
 		stmt.close();
 	}
