@@ -2,7 +2,7 @@ create database if not exists insper_keep;
 use insper_keep;
 
 
-CREATE TABLE user (
+CREATE TABLE if not exists user (
  user_id INT NOT NULL AUTO_INCREMENT,
  login VARCHAR(20) NOT NULL,
  password VARCHAR(64) NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE user (
  PRIMARY KEY (user_id)
 );
 
-CREATE TABLE nota (
+CREATE TABLE  if not exists nota (
  nota_id INT NOT NULL AUTO_INCREMENT,
  nota_text TEXT NOT NULL,
  person_id INT NOT NULL,
