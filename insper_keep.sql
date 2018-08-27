@@ -8,6 +8,7 @@ CREATE TABLE user (
  password VARCHAR(64) NOT NULL,
  nome_completo VARCHAR(100),
  email VARCHAR(50),
+ administrador INT NOT NULL,
  PRIMARY KEY (user_id)
 );
 
