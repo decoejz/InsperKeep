@@ -38,3 +38,27 @@ a:active {
     text-decoration: none;
     color:black;
 }
+
+#tituloNotas{
+	background-color: white !important;
+	border:0;
+	border-radius: 0;
+}
+
+#tituloProjeto{
+	background-color: white !important;
+	border:0;
+	border-radius: 0;
+	border-bottom: 1px solid black;
+	border-left: 1px solid black;	
+	border-top: 1px solid black;
+}
+
+#editarUsuario{
+	background-color: white !important;
+	border:0;
+	border-radius: 0;
+	border-bottom: 1px solid black;
+	border-right: 1px solid black;	
+	border-top: 1px solid black;
+}
