@@ -47,12 +47,29 @@ public class DAO {
 		return notas;
 	}
 
-	public void adiciona(Nota nota) throws SQLException {
+	public void adicionaNota(Nota nota) throws SQLException {
 		String sql = "INSERT INTO nota" + "(titulo,nota_text,person_id) values(?,?,?)";
 		PreparedStatement stmt = connection.prepareStatement(sql);
 		stmt.setString(1, nota.getTitle());
 		stmt.setString(2, nota.getNote());
 		stmt.setInt(3, nota.getPersonId());
+		stmt.execute();
+		stmt.close();
+	}
+	
+	public void removeNota(Integer id) throws SQLException {
+		PreparedStatement stmt = connection.prepareStatement("DELETE FROM nota WHERE id=?");
+		stmt.setLong(1, id);
+		stmt.execute();
+		stmt.close();
+	}
+	
+	public void alteraNota(Nota nota) throws SQLException {
+		String sql = "UPDATE nota SET " + "titulo=?, nota_text=? WHERE id=?";
+		PreparedStatement stmt = connection.prepareStatement(sql);
+		stmt.setString(1, nota.getTitle());
+		stmt.setString(2, nota.getNote());
+		stmt.setInt(3, nota.getNoteId());
 		stmt.execute();
 		stmt.close();
 	}
@@ -99,6 +116,29 @@ public class DAO {
 		
 	}
 	
+	public void alteraUser(User user) throws SQLException {
+		String sql = "UPDATE user SET " + "login=?, password=?, nome_completo=?, email=? WHERE id=?";
+		PreparedStatement stmt = connection.prepareStatement(sql);
+		stmt.setString(1, user.getLogin());
+		stmt.setString(2, user.getPassword());
+		stmt.setString(3, user.getNome());
+		stmt.setString(4, user.getEmail());
+		stmt.setInt(5, user.getId());
+		stmt.execute();
+		stmt.close();
+	}
+	
+	public boolean validateUser(User user) throws SQLException {
+		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM user WHERE login=" + user.getLogin() + "AND password="+user.getPassword());
+		if (stmt != null) {
+			stmt.close();
+			return true;
+		}
+		
+		stmt.close();
+		return false;
+		
+	}
 	
 
 	public void close() throws SQLException {

@@ -1,7 +1,6 @@
 package br.edu.insper;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -11,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class CriaNota
+ * Servlet implementation class DeletaNota
  */
-@WebServlet("/CriaNota")
-public class CriaNota extends HttpServlet {
+@WebServlet("/DeletaNota")
+public class DeletaNota extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CriaNota() {
+    public DeletaNota() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,32 +34,19 @@ public class CriaNota extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		DAO dao;
-		
-		try {
-			dao = new DAO();
-			
-			Nota nota = new Nota();
-			nota.setTitle(request.getParameter("title"));
-			nota.setNote(request.getParameter("novaNota"));
-		
-			dao.adicionaNota(nota);
-		
-			PrintWriter out = response.getWriter();
-			out.println("<html><body>");
-			out.println("adicionado" + nota.getTitle());
-			out.println("adicionado" + nota.getNote());
-			out.println("</body></html>");
-			
-			dao.close();
-		}
-		catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 
-}
+			try {
+				dao = new DAO();
+				dao.removeNota(Integer.valueOf(request.getParameter("nota_id")));
+				dao.close();
+			} catch (NumberFormatException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+
+}}
