@@ -1,6 +1,6 @@
 package br.edu.insper;
 
-public class users {
+public class User {
 	
 	private Integer id;
 	private String login;
