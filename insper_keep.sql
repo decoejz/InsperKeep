@@ -14,8 +14,13 @@ CREATE TABLE if not exists user (
 
 CREATE TABLE  if not exists nota (
  nota_id INT NOT NULL AUTO_INCREMENT,
+ titulo TEXT NOT NULL,
  nota_text TEXT NOT NULL,
  person_id INT NOT NULL,
  PRIMARY KEY (nota_id),
  FOREIGN KEY(person_id) REFERENCES user(user_id)
 );
+
+
+INSERT INTO user (login,password,administrador) values ("david","david",1);
+INSERT INTO nota (titulo,nota_text,person_id) values ("david_nota titulo fsjkhdfsjhdfkhksjdhfksdf","david texto",1);
