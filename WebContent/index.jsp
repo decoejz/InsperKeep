@@ -16,9 +16,10 @@
 	
 	
 	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-		crossorigin="anonymous">
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- 		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		crossorigin="anonymous" -->
 	<link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet">
 	
 	
@@ -29,7 +30,7 @@
 <body class="text-center">
 	<form class="form-signin">
 		<h1 class="h3 mb-3 font-weight-normal">Insperkeep</h1>
-		<input type="username" id="inputusername" class="form-control"
+		<input type="text" id="inputusername" class="form-control"
 			placeholder="Username" required autofocus> <input
 			type="password" id="inputPassword" class="form-control"
 			placeholder="Password" required>
