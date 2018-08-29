@@ -41,41 +41,24 @@
 	</nav>
 
 <br>
-<a  href ="newNote.jsp">
- <button   type="button" class="btn btn-outline-success btn-lg btn-block">Adicionar nota</button>
-</a>
-	
 
 
-
-		<table class="table table-hover">
-			<thead>
-				<tr>
-
-					<th scope="col" class="font-weight-bold" >Titulo</th>
-					<th scope="col" class="font-weight-bold" >Opções</th>
-
-				</tr>
-			</thead>
-			<tbody>
-
-				<%
-					DAO dao = new DAO();
-					List<Nota> notas = dao.getLista();
-					for (Nota nota : notas) {
-				%>
-				<tr>
-					<td><%=nota.getTitle()%> </td>
-					<td><button class="btn btn-sm btn-primary btn-block" type="submit">Editar</button> <button class="btn btn-sm btn-danger	 btn-block" type="submit">Deletar</button></td>
-				</tr>
-				<%
-					}
-				%>
-
-
-
-			</tbody>
-		</table>
+<form action="CriaNota">
+		
+			<div class="form-group">
+			  <label for="title_id"><b>Título</b></label>
+			  <input type="text" class="form-control" id="title_id" name="title">
+			</div>
+		
+			<!--Título:
+			<input type="text" name="title"><br><br>-->
+			<div class="form-group">
+				<textarea rows="5" cols="111" name="novaNota"></textarea><br><br>
+			</div>
+			<a href="home.jsp"><input type="submit" value="Enviar"></a>
+			<a href="home.jsp"><input type="button" value="Cancelar"></a>
+		</form>
+		
 
 	</div>
 
