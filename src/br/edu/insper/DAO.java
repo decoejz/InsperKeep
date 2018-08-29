@@ -130,7 +130,8 @@ public class DAO {
 	
 	public boolean validateUser(User user) throws SQLException {
 		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM user WHERE login=" + user.getLogin() + "AND password="+user.getPassword());
-		if (stmt != null) {
+		ResultSet rs = stmt.executeQuery();
+		if (rs != null) {
 			stmt.close();
 			return true;
 		}
