@@ -23,22 +23,8 @@
 <body>
 	<%@ page import="java.util.*,br.edu.insper.*"%>
 	
-	<div class="container">
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#">InsperKeep</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarText" aria-controls="navbarText"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarText">
-			<ul class="navbar-nav mr-auto">
-
-			</ul>
-			<span class="navbar-text"> Editar os usuários </span>
-			<span class="navbar-text buttons_nav"> Log Out </span>
-		</div>
-	</nav>
+	<div class="container">	
+	<jsp:include page="header.jsp"></jsp:include>
 
 <br>
 <a  href ="newNote.jsp">
@@ -66,7 +52,7 @@
 				%>
 				<tr>
 					<td><%=nota.getTitle()%> </td>
-					<td><button class="btn btn-sm btn-primary btn-block" type="submit">Editar</button> <button class="btn btn-sm btn-danger	 btn-block" type="submit">Deletar</button></td>
+					<td><button class="btn btn-sm btn-primary btn-block" type="button">Editar</button> <button class="btn btn-sm btn-danger	 btn-block" type="button">Deletar</button></td>
 				</tr>
 				<%
 					}
