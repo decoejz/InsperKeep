@@ -16,7 +16,7 @@ public class DAO {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://localhost/insper_keep", "root",
-					"Z)L{e8wQstxcagg3=jJac6}?qzQ69CjU");
+					"");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -46,6 +46,27 @@ public class DAO {
 		stmt.close();
 		return notas;
 	}
+	
+	public List<User> getUsers() throws SQLException {
+		List<User> users = new ArrayList<User>();
+		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM user");
+		ResultSet rs = stmt.executeQuery();
+		while (rs.next()) {
+			User user = new User();
+			user.setId(rs.getInt("user_id"));
+			user.setLogin(rs.getString("login"));
+			user.setPassword(rs.getString("password"));
+			user.setNome(rs.getString("nome_completo"));
+			user.setEmail(rs.getString("email"));
+			user.setAdm(rs.getInt("administrador"));
+			
+			users.add(user);
+		}
+		rs.close();
+		stmt.close();
+		return users;
+
+	}
 
 	public void adicionaNota(Nota nota) throws SQLException {
 		String sql = "INSERT INTO nota" + "(titulo,nota_text,person_id) values(?,?,?)";
@@ -72,27 +93,6 @@ public class DAO {
 		stmt.setInt(3, nota.getNoteId());
 		stmt.execute();
 		stmt.close();
-	}
-
-	public List<User> getUsers() throws SQLException {
-		List<User> users = new ArrayList<User>();
-		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM user");
-		ResultSet rs = stmt.executeQuery();
-		while (rs.next()) {
-			User user = new User();
-			user.setId(rs.getInt("user_id"));
-			user.setLogin(rs.getString("login"));
-			user.setPassword(rs.getString("password"));
-			user.setNome(rs.getString("nome_completo"));
-			user.setEmail(rs.getString("email"));
-			user.setAdm(rs.getInt("administrador"));
-
-		}
-		rs.close();
-		stmt.close();
-		
-		return users;
-
 	}
 	
 	public void addUser(User user) throws SQLException {

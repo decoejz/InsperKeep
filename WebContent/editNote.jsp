@@ -17,7 +17,7 @@
 	
 
 
-<title>Criar</title>
+<title>Editar</title>
 </head>
 <body>
 	<%@ page import="java.util.*,br.edu.insper.*"%>
@@ -34,7 +34,6 @@
 			<ul class="navbar-nav mr-auto">
 
 			</ul>
-			<span class="navbar-text"> Editar os usuários </span>
 		</div>
 	</nav>
 
