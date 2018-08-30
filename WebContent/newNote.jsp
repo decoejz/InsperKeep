@@ -19,7 +19,7 @@
 		
 
 
-<title>Home</title>
+<title>Criar</title>
 </head>
 <body>
 	<%@ page import="java.util.*,br.edu.insper.*"%>

@@ -14,23 +14,23 @@ public class User {
 	}
 
 	public String getLogin() {
-		return login;
+		return this.login;
 	}
 
 	public void setLogin(String login) {
 		this.login = login;
 	}
-
-	public String getPassword() {
-		return password;
-	}
-
+	
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+	public String getPassword() {
+		return this.password;
+	}
+
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
 	public void setEmail(String email) {
@@ -38,7 +38,7 @@ public class User {
 	}
 
 	public Integer getAdm() {
-		return adm;
+		return this.adm;
 	}
 
 	public void setAdm(Integer adm) {
