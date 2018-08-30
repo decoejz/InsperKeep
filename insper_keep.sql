@@ -23,4 +23,8 @@ CREATE TABLE  if not exists nota (
 
 
 INSERT INTO user (login,password,administrador) values ("david","david",1);
-INSERT INTO nota (titulo,nota_text,person_id) values ("david_nota titulo fsjkhdfsjhdfkhksjdhfksdf","david texto",1);
+INSERT INTO user (login,password,administrador) values ("andre","andre",1);
+INSERT INTO user (login,password,administrador) values ("teste","teste",0);
+INSERT INTO nota (titulo,nota_text,person_id) values ("Lista de Compras","Texto da nota",3);
+INSERT INTO nota (titulo,nota_text,person_id) values ("Testando","Tarefas a fazer",2);
+INSERT INTO nota (titulo,nota_text,person_id) values ("Testando o crud de notas","david texto",3);

@@ -5,11 +5,13 @@
 			aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="collapse navbar-collapse" id="navbarText">
+		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav mr-auto">
 
 			</ul>
-			<span class="navbar-text"> Editar os usuários </span>
-			<span class="navbar-text buttons_nav"> Log Out </span>
+			<a href = "home.jsp"><span class="navbar-text"> Editar os usuários </span></a>
+			<a href = "home.jsp"><span class="navbar-text buttons_nav"> Log Out </span></a>
 		</div>
 	</nav>
+	
+	
