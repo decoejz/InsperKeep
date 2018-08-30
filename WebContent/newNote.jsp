@@ -7,14 +7,14 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link rel="stylesheet" type="text/css" href="css/reset.css">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
 
 <link href="${pageContext.request.contextPath}/css/home.css" rel="stylesheet">
-	
+<%-- <link href="${pageContext.request.contextPath}/css/reset.css" rel="stylesheet"> --%>
+		
 
 
 <title>Home</title>
@@ -44,17 +44,20 @@
 <form action="CriaNota">
 		
 			<div class="form-group">
-			  <label for="title_id"><b>Título</b></label>
+			  <label for="title_id"><b>Título da nota *</b></label>
 			  <input type="text" class="form-control" id="title_id" name="title">
 			</div>
 		
 			<!--Título:
 			<input type="text" name="title"><br><br>-->
 			<div class="form-group">
-				<textarea rows="5" cols="111" name="novaNota"></textarea><br><br>
+			<label for="descricao"><b>Texto da nota</b></label>
+			<textarea class = "textarea_1 form-control" rows="5" cols="111" name="novaNota" id ="descricao"></textarea><br><br>
 			</div>
-			<a href="home.jsp"><input type="submit" value="Enviar"></a>
-			<a href="home.jsp"><input type="button" value="Cancelar"></a>
+			<a href="home.jsp"><button class="btn btn-sm btn-success" type="submit">Gravar</button></a>
+			<a href="home.jsp"><button class="btn btn-sm btn-secondary" type="button">Cancelar</button></a>
+<!-- 			<a href="home.jsp"><input type="submit" value="Enviar"></a>
+			<a href="home.jsp"><input type="button" value="Cancelar"></a> -->
 		</form>
 		
 

@@ -63,11 +63,14 @@ a:active {
 	border-top: 1px solid black;
 }
 
-.adicionar{
-
-}
 
 
 .buttons_nav{
 	margin-left: 10px;
+}
+
+.textarea_1 {
+    box-sizing: border-box;
+
+    width: 100%;
 }

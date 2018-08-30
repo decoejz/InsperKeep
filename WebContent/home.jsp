@@ -66,7 +66,7 @@
 				%>
 				<tr>
 					<td><%=nota.getTitle()%> </td>
-					<td><button class="btn btn-sm btn-primary btn-block" type="submit">Editar</button> <button class="btn btn-sm btn-danger	 btn-block" type="submit">Deletar</button></td>
+					<td><button class="btn btn-sm btn-primary btn-block" type="button">Editar</button> <button class="btn btn-sm btn-danger	 btn-block" type="button">Deletar</button></td>
 				</tr>
 				<%
 					}
