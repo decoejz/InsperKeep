@@ -16,7 +16,7 @@ public class DAO {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://localhost/insper_keep", "root",
-					"");
+					"Z)L{e8wQstxcagg3=jJac6}?qzQ69CjU");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -129,9 +129,11 @@ public class DAO {
 	}
 	
 	public boolean validateUser(User user) throws SQLException {
-		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM user WHERE login=" + user.getLogin() + "AND password="+user.getPassword());
+		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM user WHERE login = ? AND password = ? ");
+		stmt.setString(1, user.getLogin());
+		stmt.setString(2, user.getPassword());
 		ResultSet rs = stmt.executeQuery();
-		if (rs != null) {
+		if (rs.next()) {
 			stmt.close();
 			return true;
 		}

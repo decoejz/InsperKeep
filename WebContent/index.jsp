@@ -28,12 +28,13 @@
 </head>
 
 <body class="text-center">
-	<form class="form-signin">
+<%@ page import="java.util.*,br.edu.insper.*"%>
+	<form class="form-signin" method="post" action = "ValidarUser">
 		<h1 class="h3 mb-3 font-weight-normal">Insperkeep</h1>
 		<input type="text" id="inputusername" class="form-control"
-			placeholder="Username" required autofocus> <input
+			placeholder="Username" required autofocus name="login"> <input
 			type="password" id="inputPassword" class="form-control"
-			placeholder="Password" required>
+			placeholder="Password" required autofocus name="password">
 
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 	</form>
