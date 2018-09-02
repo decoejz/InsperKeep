@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class CriaNota
+ * Servlet implementation class EditaNota
  */
-@WebServlet("/CriaNota")
-public class CriaNota extends HttpServlet {
+@WebServlet("/EditaNota")
+public class EditaNota extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CriaNota() {
+    public EditaNota() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,6 +28,7 @@ public class CriaNota extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	Integer id = Integer.parseInt(request.getParameter("nota_id"));
     	Integer pessoa_id = Integer.parseInt(request.getParameter("pessoa_id"));
     	DAO dao;
 		
@@ -35,11 +36,12 @@ public class CriaNota extends HttpServlet {
 			dao = new DAO();
 			
 			Nota nota = new Nota();
+			nota.setNoteId(id);
 			nota.setTitle(request.getParameter("title"));
 			nota.setNote(request.getParameter("novaNota"));
 			nota.setPersonId(pessoa_id);
 		
-			dao.adicionaNota(nota);
+			dao.alteraNota(nota);
 			
 			dao.close();
 		}

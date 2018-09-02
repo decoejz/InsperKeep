@@ -41,7 +41,7 @@
 	</nav>
 
 <br>
-<a  href ="newNote.jsp">
+<a  href ="newUser.jsp">
  <button   type="button" class="btn btn-outline-success btn-lg btn-block">Adicionar Usuário</button>
 </a>
 	
