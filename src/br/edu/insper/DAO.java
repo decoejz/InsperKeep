@@ -26,14 +26,15 @@ public class DAO {
 		}
 	}
 
-	public List<Nota> getLista() throws SQLException {
+	public List<Nota> getLista(int person_id) throws SQLException {
 		List<Nota> notas = new ArrayList<Nota>();
-		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM nota");
+		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM nota where person_id = ? ");
+		stmt.setInt(1,person_id);
 		ResultSet rs = stmt.executeQuery();
 		while (rs.next()) {
 			Nota note = new Nota();
 			note.setNoteId(rs.getInt("nota_id"));
-			note.setTitle(rs.getString("titulo"));
+			note.setTitle(rs.getString("titulo"));                                                                                                                                                                                                                                                                                      
 			note.setNote(rs.getString("nota_text"));
 
 			// TODO checar como pegar esse id de person que depende do person_id da tabela
@@ -134,6 +135,7 @@ public class DAO {
 		stmt.setString(2, user.getPassword());
 		ResultSet rs = stmt.executeQuery();
 		if (rs.next()) {
+			user.setId(rs.getInt("user_id"));
 			stmt.close();
 			return true;
 		}

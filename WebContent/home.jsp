@@ -31,8 +31,16 @@
 <a  href ="newNote.jsp"><button   type="button" class="btn btn-outline-success btn-lg btn-block">Adicionar nota</button></a>
 	
 
+	<%String i = "a" ;%>
+	<% i = request.getAttribute("id").toString(); %>
+	
+
+	
 		<table class="table table-hover">
+
+		<%-- <% if (${name} =! nulls) %> --%>
 			<thead>
+			
 				<tr>
 
 					<th scope="col" class="font-weight-bold" >Titulo</th>
@@ -43,8 +51,11 @@
 			<tbody>
 
 				<%
+				if (i != null){
+					
+				
 					DAO dao = new DAO();
-					List<Nota> notas = dao.getLista();
+					List<Nota> notas = dao.getLista(Integer.parseInt(i));
 					for (Nota nota : notas) {
 				%>
 				<tr>
@@ -53,6 +64,7 @@
 				</tr>
 				<%
 					}
+				}
 				%>
 
 
