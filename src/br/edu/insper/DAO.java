@@ -16,7 +16,7 @@ public class DAO {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://localhost/insper_keep", "root",
-					"Z)L{e8wQstxcagg3=jJac6}?qzQ69CjU");
+					"");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -37,8 +37,7 @@ public class DAO {
 			note.setTitle(rs.getString("titulo"));                                                                                                                                                                                                                                                                                      
 			note.setNote(rs.getString("nota_text"));
 
-			// TODO checar como pegar esse id de person que depende do person_id da tabela
-			// user
+			// TODO checar como pegar esse id de person que depende do person_id da tabela user
 			note.setPersonId(rs.getInt("person_id"));
 
 			notas.add(note);
@@ -46,6 +45,25 @@ public class DAO {
 		rs.close();
 		stmt.close();
 		return notas;
+	}
+	
+	public Nota getSpecificNote(Integer note_id, Integer person_id) throws SQLException {
+		Nota note = new Nota();
+		
+		String sql = "SELECT * FROM nota WHERE nota_id=? AND person_id=?";
+		PreparedStatement stmt = connection.prepareStatement(sql);
+		stmt.setInt(1, note_id);
+		stmt.setInt(2, person_id);
+		ResultSet rs = stmt.executeQuery();
+		while (rs.next()) {
+			note.setNoteId(rs.getInt("nota_id"));
+			note.setTitle(rs.getString("titulo"));
+			note.setNote(rs.getString("nota_text"));
+			note.setPersonId(rs.getInt("person_id"));
+		}
+		rs.close();
+		stmt.close();
+		return note;
 	}
 	
 	public List<User> getUsers() throws SQLException {
@@ -68,6 +86,26 @@ public class DAO {
 		return users;
 
 	}
+	
+	public User getSpecificUser(Integer person_id) throws SQLException {
+		User user = new User();
+		
+		String sql = "SELECT * FROM user WHERE user_id=?";
+		PreparedStatement stmt = connection.prepareStatement(sql);
+		stmt.setInt(1, person_id);
+		ResultSet rs = stmt.executeQuery();
+		while (rs.next()) {
+			user.setAdm(rs.getInt("administrador"));
+			user.setEmail(rs.getString("email"));
+			user.setNome(rs.getString("nome_completo"));
+			user.setPassword(rs.getString("password"));
+			user.setLogin(rs.getString("login"));
+			user.setId(rs.getInt("user_id"));
+		}
+		rs.close();
+		stmt.close();
+		return user;
+	}
 
 	public void adicionaNota(Nota nota) throws SQLException {
 		String sql = "INSERT INTO nota" + "(titulo,nota_text,person_id) values(?,?,?)";
@@ -80,14 +118,14 @@ public class DAO {
 	}
 	
 	public void removeNota(Integer id) throws SQLException {
-		PreparedStatement stmt = connection.prepareStatement("DELETE FROM nota WHERE id=?");
+		PreparedStatement stmt = connection.prepareStatement("DELETE FROM nota WHERE nota_id=?");
 		stmt.setLong(1, id);
 		stmt.execute();
 		stmt.close();
 	}
 	
 	public void alteraNota(Nota nota) throws SQLException {
-		String sql = "UPDATE nota SET " + "titulo=?, nota_text=? WHERE id=?";
+		String sql = "UPDATE nota SET " + "titulo=?, nota_text=? WHERE nota_id=?";
 		PreparedStatement stmt = connection.prepareStatement(sql);
 		stmt.setString(1, nota.getTitle());
 		stmt.setString(2, nota.getNote());
@@ -118,13 +156,14 @@ public class DAO {
 	}
 	
 	public void alteraUser(User user) throws SQLException {
-		String sql = "UPDATE user SET " + "login=?, password=?, nome_completo=?, email=? WHERE id=?";
+		String sql = "UPDATE user SET " + "login=?, password=?, nome_completo=?, email=?, administrador=? WHERE user_id=?";
 		PreparedStatement stmt = connection.prepareStatement(sql);
 		stmt.setString(1, user.getLogin());
 		stmt.setString(2, user.getPassword());
 		stmt.setString(3, user.getNome());
 		stmt.setString(4, user.getEmail());
-		stmt.setInt(5, user.getId());
+		stmt.setInt(5, user.getAdm());
+		stmt.setInt(6, user.getId());
 		stmt.execute();
 		stmt.close();
 	}

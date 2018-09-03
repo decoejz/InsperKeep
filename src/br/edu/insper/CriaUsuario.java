@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class CriaNota
+ * Servlet implementation class CriaUsuario
  */
-@WebServlet("/CriaNota")
-public class CriaNota extends HttpServlet {
+@WebServlet("/CriaUsuario")
+public class CriaUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CriaNota() {
+    public CriaUsuario() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,18 +28,20 @@ public class CriaNota extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	Integer pessoa_id = Integer.parseInt(request.getParameter("pessoa_id"));
     	DAO dao;
 		
 		try {
 			dao = new DAO();
 			
-			Nota nota = new Nota();
-			nota.setTitle(request.getParameter("title"));
-			nota.setNote(request.getParameter("novaNota"));
-			nota.setPersonId(pessoa_id);
+			User user = new User();
+			
+			user.setAdm(Integer.parseInt(request.getParameter("adm")));
+			user.setEmail(request.getParameter("email"));
+			user.setNome(request.getParameter("nome_completo"));
+			user.setPassword(request.getParameter("password"));
+			user.setLogin(request.getParameter("login"));
 		
-			dao.adicionaNota(nota);
+			dao.addUser(user);
 			
 			dao.close();
 		}
