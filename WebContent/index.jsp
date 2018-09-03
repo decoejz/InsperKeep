@@ -40,11 +40,6 @@
 	</form>
 
 
-
-	<!-- https://getbootstrap.com/docs/4.1/examples/sign-in/ -->
-	<!--    <label for="inputPassword" class="sr-only">Password</label> -->
-	<!-- 	<label for="username" class="sr-only">Username</label> -->
-
 </body>
 </html>
 
