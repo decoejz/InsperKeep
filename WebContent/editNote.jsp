@@ -38,9 +38,11 @@
 
 <form action="EditaNota">
 			<!-- TODO: Passar os ids da nota e da pessoa aqui -->
-			<% Integer id = 1;
-			id = Integer.parseInt(request.getParameter("nota_id"));
-			Integer pessoa_id = 1;%>
+			<% 
+			Integer id = Integer.parseInt(request.getParameter("nota_id"));
+			
+			Integer pessoa_id = Integer.parseInt(request.getParameter("person_id"));%>
+			
 			<input type="hidden" name="nota_id" value="<%=id%>" />
 			<input type="hidden" name="pessoa_id" value="<%=pessoa_id%>" />
 			
@@ -62,8 +64,17 @@
 			<label for="descricao"><b>Texto da nota *</b></label>
 			<textarea class = "textarea_1 form-control" rows="5" cols="111" name="novaNota" id ="descricao" required><%=nota.getNote()%></textarea><br><br>
 			</div>
+			
+			
+			<%String link = "home.jsp?id="; 
+			link+= pessoa_id;%>
 			<a href="home.jsp"><button class="btn btn-sm btn-success" type="submit">Gravar</button></a>
-			<a href="home.jsp"><button class="btn btn-sm btn-secondary" type="button">Cancelar</button></a>
+			<a href=<%=link%>><button class="btn btn-sm btn-secondary" type="button">Cancelar</button></a>
+
+
+
+
+
 <!-- 			<a href="home.jsp"><input type="submit" value="Enviar"></a>
 			<a href="home.jsp"><input type="button" value="Cancelar"></a> -->
 		</form>

@@ -22,6 +22,7 @@
 </head>
 <body>
 	<%@ page import="java.util.*,br.edu.insper.*"%>
+	<div class="container">
 	<%
 		String i = "a";
 	%>
@@ -39,13 +40,17 @@
 
 
 	<%
-		/* if (i != "a") */ if(true){
+	 if (i != "a") {
 	%>
-
-	<div class="container">
+	
+	
+	
+	<%String link_adicionar = "newNote.jsp?id=";
+		link_adicionar += i;
+	%>
 		<jsp:include page="header.jsp"></jsp:include>
 		<%-- <h1><%= request.getAttribute("attributeKey") %></h1> --%>
-		<br> <a href="newNote.jsp"><button type="button"
+		<br> <a href=<%=link_adicionar%>><button type="button"
 				class="btn btn-outline-success btn-lg btn-block">Adicionar
 				nota</button></a>
 	
@@ -73,7 +78,8 @@
 							for (Nota nota : notas) {
 								link = "editNote.jsp?nota_id=";
 								link += nota.getNoteId();
-								System.out.println(link);
+								link += "&person_id=";
+								link += i;
 								
 								
 				%>
@@ -95,12 +101,13 @@
 		</table>
 
 
-	</div>
+	
 	<%
 		} else {
 	%>
 	<h1>Usuário não autenticado</h1>
 	<img src = "https://media.giphy.com/media/12XMGIWtrHBl5e/giphy.gif" alt = "No"> <%}%>
+	</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>

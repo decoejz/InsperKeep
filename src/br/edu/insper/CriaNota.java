@@ -48,6 +48,7 @@ public class CriaNota extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		request.setAttribute("id", pessoa_id);
 		request.getRequestDispatcher("home.jsp").forward(request, response);
     }
     

@@ -32,7 +32,9 @@
 
 <form action="CriaNota">
 			<!-- TODO: Passar os ids da nota e da pessoa aqui -->
-			<%Integer pessoa_id = 1;%>
+			<%
+			Integer pessoa_id = Integer.parseInt(request.getParameter("id"));%>
+			
 			<input type="hidden" name="pessoa_id" value="<%=pessoa_id%>" />
 		
 			<div class="form-group">
@@ -47,7 +49,10 @@
 			<textarea class = "textarea_1 form-control" rows="5" cols="111" name="novaNota" id ="descricao" required></textarea><br><br>
 			</div>
 			<a href="home.jsp"><button class="btn btn-sm btn-success" type="submit">Gravar</button></a>
-			<a href="home.jsp"><button class="btn btn-sm btn-secondary" type="button">Cancelar</button></a>
+			
+			<%String link = "home.jsp?id="; 
+			link+= pessoa_id;%>
+			<a href=<%=link%>><button class="btn btn-sm btn-secondary" type="button">Cancelar</button></a>
 <!-- 			<a href="home.jsp"><input type="submit" value="Enviar"></a>
 			<a href="home.jsp"><input type="button" value="Cancelar"></a> -->
 		</form>
