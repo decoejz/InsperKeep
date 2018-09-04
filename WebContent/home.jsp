@@ -32,18 +32,19 @@
 			i = request.getAttribute("id").toString();
 		} catch (NullPointerException e) {
 			
-			i = "a";
+			/* i = "a"; */
+			i="1";
 		}
 	%>
 
 
 	<%
-		if (i != "a") {
+		/* if (i != "a") */ if(true){
 	%>
 
 	<div class="container">
 		<jsp:include page="header.jsp"></jsp:include>
-		<h1><%= request.getAttribute("attributeKey") %></h1>
+		<%-- <h1><%= request.getAttribute("attributeKey") %></h1> --%>
 		<br> <a href="newNote.jsp"><button type="button"
 				class="btn btn-outline-success btn-lg btn-block">Adicionar
 				nota</button></a>
