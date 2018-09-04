@@ -16,7 +16,7 @@ public class DAO {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://localhost/insper_keep", "root",
-					"Z)L{e8wQstxcagg3=jJac6}?qzQ69CjU");
+					"");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -26,19 +26,20 @@ public class DAO {
 		}
 	}
 
+
 	public List<Nota> getLista(String i) throws SQLException {
 		List<Nota> notas = new ArrayList<Nota>();
 		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM nota WHERE person_id = ?");
 		stmt.setString(1, i);
+
 		ResultSet rs = stmt.executeQuery();
 		while (rs.next()) {
 			Nota note = new Nota();
 			note.setNoteId(rs.getInt("nota_id"));
-			note.setTitle(rs.getString("titulo"));
+			note.setTitle(rs.getString("titulo"));                                                                                                                                                                                                                                                                                      
 			note.setNote(rs.getString("nota_text"));
 
-			// TODO checar como pegar esse id de person que depende do person_id da tabela
-			// user
+			// TODO checar como pegar esse id de person que depende do person_id da tabela user
 			note.setPersonId(rs.getInt("person_id"));
 
 			notas.add(note);
@@ -48,7 +49,7 @@ public class DAO {
 		return notas;
 	}
 	
-	
+
 	public Nota getSpecificNote(Integer note_id, Integer person_id) throws SQLException {
 		Nota note = new Nota();
 		
@@ -120,14 +121,14 @@ public class DAO {
 	}
 	
 	public void removeNota(Integer id) throws SQLException {
-		PreparedStatement stmt = connection.prepareStatement("DELETE FROM nota WHERE id=?");
+		PreparedStatement stmt = connection.prepareStatement("DELETE FROM nota WHERE nota_id=?");
 		stmt.setLong(1, id);
 		stmt.execute();
 		stmt.close();
 	}
 	
 	public void alteraNota(Nota nota) throws SQLException {
-		String sql = "UPDATE nota SET " + "titulo=?, nota_text=? WHERE id=?";
+		String sql = "UPDATE nota SET " + "titulo=?, nota_text=? WHERE nota_id=?";
 		PreparedStatement stmt = connection.prepareStatement(sql);
 		stmt.setString(1, nota.getTitle());
 		stmt.setString(2, nota.getNote());
@@ -158,13 +159,14 @@ public class DAO {
 	}
 	
 	public void alteraUser(User user) throws SQLException {
-		String sql = "UPDATE user SET " + "login=?, password=?, nome_completo=?, email=? WHERE id=?";
+		String sql = "UPDATE user SET " + "login=?, password=?, nome_completo=?, email=?, administrador=? WHERE user_id=?";
 		PreparedStatement stmt = connection.prepareStatement(sql);
 		stmt.setString(1, user.getLogin());
 		stmt.setString(2, user.getPassword());
 		stmt.setString(3, user.getNome());
 		stmt.setString(4, user.getEmail());
-		stmt.setInt(5, user.getId());
+		stmt.setInt(5, user.getAdm());
+		stmt.setInt(6, user.getId());
 		stmt.execute();
 		stmt.close();
 	}
@@ -176,6 +178,7 @@ public class DAO {
 		ResultSet rs = stmt.executeQuery();
 		User login = new User();
 		if (rs.next()) {
+
 			
 			login.setId(rs.getInt("user_id"));
 			login.setLogin(rs.getString("login"));
@@ -184,6 +187,7 @@ public class DAO {
 			login.setEmail(rs.getString("email"));
 			login.setAdm(rs.getInt("administrador"));
 		
+
 			stmt.close();
 			return login;
 		}

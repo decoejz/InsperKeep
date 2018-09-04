@@ -11,7 +11,6 @@
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
-
 <!--  	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous" -->
 <link href="${pageContext.request.contextPath}/css/home.css"
@@ -50,7 +49,14 @@
 				nota</button></a>
 
 
+	<%String i = "a" ;%>
+	<% i = request.getAttribute("id").toString(); %>
+	
+
+	
 		<table class="table table-hover">
+
+		<%-- <% if (${name} =! nulls) %> --%>
 			<thead>
 
 				<tr>
@@ -63,11 +69,13 @@
 			<tbody>
 
 				<%
+
 					if (i != null) {
 
 							DAO dao = new DAO();
 							List<Nota> notas = dao.getLista(i);
 							for (Nota nota : notas) {
+
 				%>
 				<tr>
 					<td><%=nota.getTitle()%></td>
@@ -77,7 +85,9 @@
 				</tr>
 				<%
 					}
+
 						}
+
 				%>
 
 
@@ -93,4 +103,7 @@
 	<h1>Usuário não autenticado</h1>
 	<img src = "https://media.giphy.com/media/12XMGIWtrHBl5e/giphy.gif" alt = "No"> <%}%>
 </body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
 </html>
