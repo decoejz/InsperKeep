@@ -19,7 +19,7 @@
 		
 
 
-<title>Editar nota</title>
+<title>Editar usuário</title>
 </head>
 <body>
 	<%@ page import="java.util.*,br.edu.insper.*"%>
@@ -36,31 +36,34 @@
 <br>
 
 
-<form action="EditaNota">
-			<!-- TODO: Passar os ids da nota e da pessoa aqui -->
-			<%Integer id = 1;
-			Integer pessoa_id = 1;%>
-			<input type="hidden" name="nota_id" value="<%=id%>" />
-			<input type="hidden" name="pessoa_id" value="<%=pessoa_id%>" />
-			
-			<div class="form-group">
-			  <label for="title_id"><b>Título da nota *</b></label>
-			 	
-			 	
+<form action="EditaUsuario">
+			<!-- TODO: Passar o id da pessoa aqui -->
+			<%Integer pessoa_id = 2;%>
+			<input type="hidden" name="pessoa_id" value="<%=pessoa_id%>" /> 
+			<div class="form-group">		 	
 			<%
 					DAO dao = new DAO();
-					Nota nota = dao.getSpecificNote(id,pessoa_id);
+					User user = dao.getSpecificUser(pessoa_id);
 				%>			 	
 			 
-			  <input type="text" class="form-control" id="title_id" name="title" required value="<%=nota.getTitle()%>">
+			<label for="title_id"><b>Login *</b></label>
+			<input type="text" class="form-control" id="title_id" name="login" required value="<%=user.getLogin()%>">
+			
+			<label for="title_id"><b>Senha *</b></label>
+			<input type="text" class="form-control" id="title_id" name="password" required value="<%=user.getPassword()%>">
+			
+			<label for="title_id"><b>Nome Completo *</b></label>
+			<input type="text" class="form-control" id="title_id" name="nome_completo" required value="<%=user.getNome()%>">
+			
+			<label for="title_id"><b>Email *</b></label>
+			<input type="email" class="form-control" id="title_id" name="email" required value="<%=user.getEmail()%>">
+			
+			<label for="title_id"><b>Administrador *</b></label>
+			<input type="number" min="0" max="1" name="adm" required value="<%=user.getAdm()%>">
+			<p>0 - Caso não seja administrador</p>
+			<p>1 - Caso seja administrador.</p>
 			</div>
-		
-			<!--Título:
-			<input type="text" name="title"><br><br>-->
-			<div class="form-group">
-			<label for="descricao"><b>Texto da nota *</b></label>
-			<textarea class = "textarea_1 form-control" rows="5" cols="111" name="novaNota" id ="descricao" required><%=nota.getNote()%></textarea><br><br>
-			</div>
+			
 			<a href="home.jsp"><button class="btn btn-sm btn-success" type="submit">Gravar</button></a>
 			<a href="home.jsp"><button class="btn btn-sm btn-secondary" type="button">Cancelar</button></a>
 <!-- 			<a href="home.jsp"><input type="submit" value="Enviar"></a>

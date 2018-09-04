@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class CriaNota
+ * Servlet implementation class EditaUsuario
  */
-@WebServlet("/CriaNota")
-public class CriaNota extends HttpServlet {
+@WebServlet("/EditaUsuario")
+public class EditaUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CriaNota() {
+    public EditaUsuario() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,12 +34,15 @@ public class CriaNota extends HttpServlet {
 		try {
 			dao = new DAO();
 			
-			Nota nota = new Nota();
-			nota.setTitle(request.getParameter("title"));
-			nota.setNote(request.getParameter("novaNota"));
-			nota.setPersonId(pessoa_id);
+			User user = new User();
+			user.setAdm(Integer.parseInt(request.getParameter("adm")));
+			user.setEmail(request.getParameter("email"));
+			user.setNome(request.getParameter("nome_completo"));
+			user.setPassword(request.getParameter("password"));
+			user.setLogin(request.getParameter("login"));
+			user.setId(pessoa_id);
 		
-			dao.adicionaNota(nota);
+			dao.alteraUser(user);
 			
 			dao.close();
 		}

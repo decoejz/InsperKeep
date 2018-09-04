@@ -10,7 +10,7 @@
 
 			</ul>
 			<a href = "home.jsp"><span class="navbar-text"> Editar os usuários </span></a>
-			<a href = "home.jsp"><span class="navbar-text buttons_nav"> Log Out </span></a>
+			<a href = "index.jsp"><span class="navbar-text buttons_nav"> Log Out </span></a>
 		</div>
 	</nav>
 	

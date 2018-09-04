@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" session = "true"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +32,7 @@
 		try {
 			i = request.getAttribute("id").toString();
 		} catch (NullPointerException e) {
-			System.out.print("Caught the NullPointerException");
+			
 			i = "a";
 		}
 	%>
@@ -44,15 +44,13 @@
 
 	<div class="container">
 		<jsp:include page="header.jsp"></jsp:include>
-
+		<h1><%= request.getAttribute("attributeKey") %></h1>
 		<br> <a href="newNote.jsp"><button type="button"
 				class="btn btn-outline-success btn-lg btn-block">Adicionar
 				nota</button></a>
 
 
 		<table class="table table-hover">
-
-			<%-- <% if (${name} =! nulls) %> --%>
 			<thead>
 
 				<tr>
@@ -68,7 +66,7 @@
 					if (i != null) {
 
 							DAO dao = new DAO();
-							List<Nota> notas = dao.getLista();
+							List<Nota> notas = dao.getLista(i);
 							for (Nota nota : notas) {
 				%>
 				<tr>
