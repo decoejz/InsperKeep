@@ -74,23 +74,7 @@ public class ValidarUser extends HttpServlet {
 	    	out.println("<a href=\"index.jsp\"><input type=\"button\" value=\"Cancelar\"></a>");
 
 
-			boolean auth = dao.validateUser(user);
-
-			if (auth == true) {
-				
-				request.setAttribute("id", user.getId());
-				request.getRequestDispatcher("home.jsp").forward(request, response);
-				
-			} else {
-				PrintWriter out = response.getWriter();
-				out.println("<html>");
-				out.println("<body>");
-				out.println("<h1> Usuário não autenticado" + "</h3><br>");
-				out.println("<a href=\"index.jsp\"><input type=\"button\" value=\"Cancelar\"></a>");
-
-				out.println("</body>");
-
-				out.println("</html>");
+		
 
 			}
 		} catch (SQLException e) {
