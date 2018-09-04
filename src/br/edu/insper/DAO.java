@@ -26,10 +26,12 @@ public class DAO {
 		}
 	}
 
-	public List<Nota> getLista(int person_id) throws SQLException {
+
+	public List<Nota> getLista(String i) throws SQLException {
 		List<Nota> notas = new ArrayList<Nota>();
-		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM nota where person_id = ? ");
-		stmt.setInt(1,person_id);
+		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM nota WHERE person_id = ?");
+		stmt.setString(1, i);
+
 		ResultSet rs = stmt.executeQuery();
 		while (rs.next()) {
 			Nota note = new Nota();
@@ -47,6 +49,7 @@ public class DAO {
 		return notas;
 	}
 	
+
 	public Nota getSpecificNote(Integer note_id, Integer person_id) throws SQLException {
 		Nota note = new Nota();
 		
@@ -168,19 +171,29 @@ public class DAO {
 		stmt.close();
 	}
 	
-	public boolean validateUser(User user) throws SQLException {
+	public User validateUser(User user) throws SQLException {
 		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM user WHERE login = ? AND password = ? ");
 		stmt.setString(1, user.getLogin());
 		stmt.setString(2, user.getPassword());
 		ResultSet rs = stmt.executeQuery();
+		User login = new User();
 		if (rs.next()) {
-			user.setId(rs.getInt("user_id"));
-			stmt.close();
-			return true;
-		}
+
+			
+			login.setId(rs.getInt("user_id"));
+			login.setLogin(rs.getString("login"));
+			login.setPassword(rs.getString("password"));
+			login.setNome(rs.getString("nome_completo"));
+			login.setEmail(rs.getString("email"));
+			login.setAdm(rs.getInt("administrador"));
 		
+
+			stmt.close();
+			return login;
+		}
+		login.setId(null);
 		stmt.close();
-		return false;
+		return login;
 		
 	}
 	

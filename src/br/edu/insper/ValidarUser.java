@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -47,8 +48,31 @@ public class ValidarUser extends HttpServlet {
 		dao = new DAO();
 		User user = new User();
 		try {
-			user.setLogin(request.getParameter("login"));
-			user.setPassword(request.getParameter("password"));
+
+		user.setLogin(request.getParameter("login"));
+		user.setPassword(request.getParameter("password"));
+		
+		user =dao.validateUser(user);
+	
+		
+		if (user.getId() != null) {
+			
+			Cookie uiColorCookie = new Cookie("color", "red");
+			response.addCookie(uiColorCookie);
+			uiColorCookie.setMaxAge(60*60);
+			
+			
+			
+			request.setAttribute("id", user.getId());
+			request.getRequestDispatcher("home.jsp").forward(request, response);
+		}
+		else {
+			PrintWriter out  = response.getWriter();
+			out.println("<html>");
+	    	out.println("<body>");
+	    	out.println("<h1> Usuário não autenticado" + "</h3><br>");
+	    	out.println("<a href=\"index.jsp\"><input type=\"button\" value=\"Cancelar\"></a>");
+
 
 			boolean auth = dao.validateUser(user);
 
