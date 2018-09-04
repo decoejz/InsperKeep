@@ -47,12 +47,7 @@
 		<br> <a href="newNote.jsp"><button type="button"
 				class="btn btn-outline-success btn-lg btn-block">Adicionar
 				nota</button></a>
-
-
-	<%String i = "a" ;%>
-	<% i = request.getAttribute("id").toString(); %>
 	
-
 	
 		<table class="table table-hover">
 
