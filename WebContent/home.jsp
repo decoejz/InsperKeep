@@ -65,19 +65,22 @@
 			<tbody>
 
 				<%
-
+					
 					if (i != null) {
-
+							String link;
 							DAO dao = new DAO();
 							List<Nota> notas = dao.getLista(i);
 							for (Nota nota : notas) {
-
+								link = "editNote.jsp?nota_id=";
+								link += nota.getNoteId();
+								System.out.println(link);
+								
+								
 				%>
 				<tr>
 					<td><%=nota.getTitle()%></td>
-					<td><button class="btn btn-sm btn-primary btn-block"
-							type="button">Editar</button>
-						<button class="btn btn-sm btn-danger	 btn-block" type="button">Deletar</button></td>
+					<td><a href=<%=link%> ><button class="btn btn-sm btn-primary btn-block" type="button">Editar</button></a>
+					<button class="btn btn-sm btn-danger	 btn-block" type="button">Deletar</button></td>
 				</tr>
 				<%
 					}

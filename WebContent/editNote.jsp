@@ -38,7 +38,8 @@
 
 <form action="EditaNota">
 			<!-- TODO: Passar os ids da nota e da pessoa aqui -->
-			<%Integer id = 1;
+			<% Integer id = 1;
+			id = Integer.parseInt(request.getParameter("nota_id"));
 			Integer pessoa_id = 1;%>
 			<input type="hidden" name="nota_id" value="<%=id%>" />
 			<input type="hidden" name="pessoa_id" value="<%=pessoa_id%>" />
