@@ -38,7 +38,7 @@
 
 <form action="EditaUsuario">
 			<!-- TODO: Passar o id da pessoa aqui -->
-			<%Integer pessoa_id = 2;%>
+			<%Integer pessoa_id = Integer.parseInt(request.getParameter("person_id"));%>
 			<input type="hidden" name="pessoa_id" value="<%=pessoa_id%>" /> 
 			<div class="form-group">		 	
 			<%

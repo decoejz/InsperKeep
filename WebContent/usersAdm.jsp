@@ -61,12 +61,24 @@
 
 				<%
 					DAO dao = new DAO();
+					String link;
 					List<User> users = dao.getUsers();
 					for (User user : users) {
+						String id = user.getId().toString();
+						link = "editUser.jsp?person_id=";
+						link += id;
 				%>
 				<tr>
 					<td><%=user.getLogin()%> </td>
-					<td><button class="btn btn-sm btn-primary btn-block" type="submit">Editar</button> <button class="btn btn-sm btn-danger	 btn-block" type="submit">Deletar</button></td>
+					<td><a href=<%=link%> ><button class="btn btn-sm btn-primary btn-block" type="submit">Editar</button></a>
+					
+					<form action="DeletaUser">
+						<input type="hidden" name="person_id" value="<%=id%>"/>
+						
+						<button class="btn btn-sm btn-danger btn-block" type="submit">Deletar</button>
+					</form>
+					
+					<!-- <button class="btn btn-sm btn-danger	 btn-block" type="submit">Deletar</button> --></td>
 				</tr>
 				<%
 					}

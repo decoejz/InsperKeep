@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class DeletaNota
+ * Servlet implementation class DeletaUser
  */
-@WebServlet("/DeletaNota")
-public class DeletaNota extends HttpServlet {
+@WebServlet("/DeletaUser")
+public class DeletaUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeletaNota() {
+    public DeletaUser() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,14 +28,15 @@ public class DeletaNota extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Integer notaId = Integer.parseInt(request.getParameter("nota_id"));
 		Integer personId = Integer.parseInt(request.getParameter("person_id"));
 	
 		DAO dao;
 
 		try {
 			dao = new DAO();
-			dao.removeNota(notaId,personId);
+			User usuario = new User();
+			usuario.setId(personId);
+			dao.deleteUser(usuario);
 			dao.close();
 		} catch (NumberFormatException | SQLException e) {
 			// TODO Auto-generated catch block
@@ -43,7 +44,7 @@ public class DeletaNota extends HttpServlet {
 		}
 		
 		request.setAttribute("id", personId);
-		request.getRequestDispatcher("home.jsp").forward(request, response);
+		request.getRequestDispatcher("usersAdm.jsp").forward(request, response);
 
     }
     

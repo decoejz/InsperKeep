@@ -120,19 +120,21 @@ public class DAO {
 		stmt.close();
 	}
 	
-	public void removeNota(Integer id) throws SQLException {
-		PreparedStatement stmt = connection.prepareStatement("DELETE FROM nota WHERE nota_id=?");
+	public void removeNota(Integer id, Integer personId) throws SQLException {
+		PreparedStatement stmt = connection.prepareStatement("DELETE FROM nota WHERE nota_id=? AND person_id=?");
 		stmt.setLong(1, id);
+		stmt.setLong(2, personId);
 		stmt.execute();
 		stmt.close();
 	}
 	
 	public void alteraNota(Nota nota) throws SQLException {
-		String sql = "UPDATE nota SET " + "titulo=?, nota_text=? WHERE nota_id=?";
+		String sql = "UPDATE nota SET " + "titulo=?, nota_text=? WHERE nota_id=? AND person_id=?";
 		PreparedStatement stmt = connection.prepareStatement(sql);
 		stmt.setString(1, nota.getTitle());
 		stmt.setString(2, nota.getNote());
 		stmt.setInt(3, nota.getNoteId());
+		stmt.setInt(4, nota.getPersonId());
 		stmt.execute();
 		stmt.close();
 	}

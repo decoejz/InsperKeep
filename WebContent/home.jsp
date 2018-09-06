@@ -76,17 +76,25 @@
 							DAO dao = new DAO();
 							List<Nota> notas = dao.getLista(i);
 							for (Nota nota : notas) {
+								String notaId = nota.getNoteId().toString();
 								link = "editNote.jsp?nota_id=";
-								link += nota.getNoteId();
+								link += notaId;
 								link += "&person_id=";
-								link += i;
-								
+								link += i;							
 								
 				%>
 				<tr>
 					<td><%=nota.getTitle()%></td>
 					<td><a href=<%=link%> ><button class="btn btn-sm btn-primary btn-block" type="button">Editar</button></a>
-					<button class="btn btn-sm btn-danger	 btn-block" type="button">Deletar</button></td>
+				
+					<form action="DeletaNota">
+						<input type="hidden" name="nota_id" value="<%=notaId%>" />
+						<input type="hidden" name="person_id" value="<%=i%>"/>
+						
+						<button class="btn btn-sm btn-danger	 btn-block" type="submit">Deletar</button>
+					</form>
+					
+					<!-- <button class="btn btn-sm btn-danger	 btn-block" type="button">Deletar</button> --></td>
 				</tr>
 				<%
 					}
