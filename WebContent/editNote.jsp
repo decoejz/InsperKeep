@@ -41,10 +41,10 @@
 			<% 
 			Integer id = Integer.parseInt(request.getParameter("nota_id"));
 			
-			Integer pessoa_id = Integer.parseInt(request.getParameter("person_id"));%>
+			Integer i = Integer.parseInt(request.getParameter("person_id"));%>
 			
 			<input type="hidden" name="nota_id" value="<%=id%>" />
-			<input type="hidden" name="pessoa_id" value="<%=pessoa_id%>" />
+			<input type="hidden" name="i" value="<%=i%>" />
 			
 			<div class="form-group">
 			  <label for="title_id"><b>Título da nota *</b></label>
@@ -52,7 +52,7 @@
 			 	
 			<%
 					DAO dao = new DAO();
-					Nota nota = dao.getSpecificNote(id,pessoa_id);
+					Nota nota = dao.getSpecificNote(id,i);
 				%>			 	
 			 
 			  <input type="text" class="form-control" id="title_id" name="title" required value="<%=nota.getTitle()%>">
@@ -67,9 +67,9 @@
 			
 			
 			<%String link = "home.jsp?id="; 
-			link+= pessoa_id;%>
+			link+= i;%>
 			<a href="home.jsp"><button class="btn btn-sm btn-success" type="submit">Gravar</button></a>
-			<a href=<%=link%>><button class="btn btn-sm btn-secondary" type="button">Cancelar</button></a>
+			<a href="home.jsp"><button class="btn btn-sm btn-secondary" type="submit">Cancelar</button></a>
 
 
 
@@ -78,6 +78,14 @@
 <!-- 			<a href="home.jsp"><input type="submit" value="Enviar"></a>
 			<a href="home.jsp"><input type="button" value="Cancelar"></a> -->
 		</form>
+		
+		
+						<form action="EditaNota">
+			<input type="hidden" name="nota_id" value="<%=id%>" />
+			<input type="hidden" name="i" value="<%=i%>" />
+						
+						<button class="btn btn-sm btn-danger	 btn-block" type="submit">Deletar</button>
+					</form>
 		
 
 	</div>

@@ -34,14 +34,19 @@
 		} catch (NullPointerException e) {
 			
 			/* i = "a"; */
-			i="1";
+		
+		    String redirectURL = "user_not.jsp";
+		    response.sendRedirect(redirectURL);
+
+
 		}
 	%>
 
 
 	<%
 	 if (i != "a") {
-	%>
+
+		} %>
 	
 	
 	
@@ -63,6 +68,7 @@
 				<tr>
 
 					<th scope="col" class="font-weight-bold">Titulo</th>
+					<th scope="col" class="font-weight-bold">Nota</th>
 					<th scope="col" class="font-weight-bold">Opções</th>
 
 				</tr>
@@ -85,6 +91,8 @@
 				%>
 				<tr>
 					<td><%=nota.getTitle()%></td>
+					<td class="max_width"><%=nota.getNote()%></td>
+					
 					<td><a href=<%=link%> ><button class="btn btn-sm btn-primary btn-block" type="button">Editar</button></a>
 				
 					<form action="DeletaNota">
@@ -110,11 +118,7 @@
 
 
 	
-	<%
-		} else {
-	%>
-	<h1>Usuário não autenticado</h1>
-	<img src = "https://media.giphy.com/media/12XMGIWtrHBl5e/giphy.gif" alt = "No"> <%}%>
+
 	</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>

@@ -9,7 +9,14 @@
 			<ul class="navbar-nav mr-auto">
 
 			</ul>
-			<a href = "home.jsp"><span class="navbar-text"> Editar os usuários </span></a>
+			
+			<% 
+			String i = "a";
+			String link = "usersAdm.jsp?id=" ;
+			link += "1";%>
+			
+			<a href=<%=link%> ><button type="button">Editar users</button></a>
+			
 			<a href = "index.jsp"><span class="navbar-text buttons_nav"> Log Out </span></a>
 		</div>
 	</nav>

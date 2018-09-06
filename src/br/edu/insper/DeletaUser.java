@@ -28,7 +28,11 @@ public class DeletaUser extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Integer personId = Integer.parseInt(request.getParameter("person_id"));
+		
+    	
+    	Integer personId = Integer.parseInt(request.getParameter("person_id"));
+    	Integer id = Integer.parseInt(request.getParameter("id"));
+
 	
 		DAO dao;
 
@@ -43,8 +47,21 @@ public class DeletaUser extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		request.setAttribute("id", personId);
-		request.getRequestDispatcher("usersAdm.jsp").forward(request, response);
+		System.out.println(id + " " + personId);
+		
+		if (personId == id) {
+			System.out.println(id + " "  );
+			response.sendRedirect("index.jsp");
+			return;
+		}
+		else {
+			
+			
+			
+			request.setAttribute("id", id);
+			request.getRequestDispatcher("usersAdm.jsp").forward(request, response);
+		}
+
 
     }
     

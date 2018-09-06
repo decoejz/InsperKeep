@@ -16,7 +16,7 @@ public class DAO {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://localhost/insper_keep", "root",
-					"");
+					"Z)L{e8wQstxcagg3=jJac6}?qzQ69CjU");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -152,8 +152,13 @@ public class DAO {
 	}
 	
 	public void deleteUser(User user) throws SQLException{
-		String sql = "DELETE FROM user WHERE " + "user_id = ?";
+		String sql = "DELETE FROM nota WHERE " + "person_id = ?";
 		PreparedStatement stmt = connection.prepareStatement(sql);
+		stmt.setInt(1, user.getId());
+		stmt.execute();
+		
+		sql = "DELETE FROM user WHERE " + "user_id = ?";
+		stmt = connection.prepareStatement(sql);
 		stmt.setInt(1, user.getId());
 		stmt.execute();
 		stmt.close();

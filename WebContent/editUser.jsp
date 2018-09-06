@@ -31,6 +31,8 @@
 	<%@ page import="javax.servlet.http.HttpServletResponse"%>
 	
 	<div class="container">
+		<%Integer pessoa_id = Integer.parseInt(request.getParameter("user_id"));%>
+		<%Integer i = Integer.parseInt(request.getParameter("id"));%>
 	<jsp:include page="header.jsp"></jsp:include>
 
 <br>
@@ -38,7 +40,7 @@
 
 <form action="EditaUsuario">
 			<!-- TODO: Passar o id da pessoa aqui -->
-			<%Integer pessoa_id = Integer.parseInt(request.getParameter("person_id"));%>
+
 			<input type="hidden" name="pessoa_id" value="<%=pessoa_id%>" /> 
 			<div class="form-group">		 	
 			<%
@@ -65,7 +67,7 @@
 			</div>
 			
 			<a href="home.jsp"><button class="btn btn-sm btn-success" type="submit">Gravar</button></a>
-			<a href="home.jsp"><button class="btn btn-sm btn-secondary" type="button">Cancelar</button></a>
+			<a href="home.jsp"><button class="btn btn-sm btn-secondary" type="submit">Cancelar</button></a>
 <!-- 			<a href="home.jsp"><input type="submit" value="Enviar"></a>
 			<a href="home.jsp"><input type="button" value="Cancelar"></a> -->
 		</form>

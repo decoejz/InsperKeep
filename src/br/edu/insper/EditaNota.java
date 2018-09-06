@@ -29,7 +29,7 @@ public class EditaNota extends HttpServlet {
 	 */
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	Integer id = Integer.parseInt(request.getParameter("nota_id"));
-    	Integer pessoa_id = Integer.parseInt(request.getParameter("pessoa_id"));
+    	Integer pessoa_id = Integer.parseInt(request.getParameter("i"));
     	DAO dao;
 		
 		try {

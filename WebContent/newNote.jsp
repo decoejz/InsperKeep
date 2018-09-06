@@ -33,9 +33,9 @@
 <form action="CriaNota">
 			<!-- TODO: Passar os ids da nota e da pessoa aqui -->
 			<%
-			Integer pessoa_id = Integer.parseInt(request.getParameter("id"));%>
+			Integer id = Integer.parseInt(request.getParameter("id"));%>
 			
-			<input type="hidden" name="pessoa_id" value="<%=pessoa_id%>" />
+			<input type="hidden" name="pessoa_id" value="<%=id%>" />
 		
 			<div class="form-group">
 			  <label for="title_id"><b>Título da nota *</b></label>
@@ -50,9 +50,12 @@
 			</div>
 			<a href="home.jsp"><button class="btn btn-sm btn-success" type="submit">Gravar</button></a>
 			
+			
+			
+			
 			<%String link = "home.jsp?id="; 
-			link+= pessoa_id;%>
-			<a href=<%=link%>><button class="btn btn-sm btn-secondary" type="button">Cancelar</button></a>
+			link+= id;%>
+			<a href=<%=link%>><button class="btn btn-sm btn-secondary" type="submit">Cancelar</button></a>
 <!-- 			<a href="home.jsp"><input type="submit" value="Enviar"></a>
 			<a href="home.jsp"><input type="button" value="Cancelar"></a> -->
 		</form>
