@@ -36,8 +36,12 @@
 	
 	
 	
-	
-	<jsp:include page="header.jsp"></jsp:include>
+		<jsp:include page="header.jsp">
+		
+		<jsp:param name="id_header" value = "<%=i%>" />
+		
+		
+		</jsp:include>
 
 <br>
 
@@ -70,13 +74,18 @@
 			<p>1 - Caso seja administrador.</p>
 			</div>
 			
-			<a href="home.jsp"><button class="btn btn-sm btn-success" type="submit">Gravar</button></a>
-			<a href="home.jsp"><button class="btn btn-sm btn-secondary" type="submit">Cancelar</button></a>
+			<a href="home.jsp"><button class="btn btn-outline-success btn-lg btn-block" type="submit">Gravar</button></a>
+
 <!-- 			<a href="home.jsp"><input type="submit" value="Enviar"></a>
 			<a href="home.jsp"><input type="button" value="Cancelar"></a> -->
-		</form>
 		
-
+		
+		</form>
+		<form action="RedirectUserAdm">
+			<input type="hidden" name="id" value="<%=i%>" />
+						
+						<button class="btn btn-outline-danger btn-lg btn-block" type="submit">Cancelar</button>
+					</form>
 	</div>
 
 </body>

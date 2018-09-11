@@ -206,13 +206,12 @@ public class DAO {
 	
 	
 	public Boolean verifyAdm(String person_id) throws SQLException {
-		User user = new User();
+
 		
-		String sql = "SELECT administrador FROM user WHERE user_id=?";
+		String sql = "SELECT * FROM user WHERE administrador = 1 AND user_id = " + person_id;
 		PreparedStatement stmt = connection.prepareStatement(sql);
-		stmt.setInt(1, Integer.parseInt(person_id));
 		ResultSet rs = stmt.executeQuery();
-		if (rs.getInt("administrador")==1) {
+		if (rs.next()) {
 			rs.close();
 			stmt.close();
 			return true;

@@ -50,7 +50,7 @@ public class EditaUsuario extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.setAttribute("person_id", pessoa_id);
+		request.setAttribute("id", pessoa_id);
 		request.getRequestDispatcher("usersAdm.jsp").forward(request, response);
     }
     

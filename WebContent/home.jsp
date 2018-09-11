@@ -81,8 +81,6 @@
 			<tbody>
 
 				<%
-					
-					if (i != null) {
 							String link;
 							DAO dao = new DAO();
 							List<Nota> notas = dao.getLista(i);
@@ -112,7 +110,7 @@
 				<%
 					}
 
-						}
+						
 
 				%>
 

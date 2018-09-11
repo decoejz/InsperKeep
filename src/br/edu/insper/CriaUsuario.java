@@ -29,7 +29,7 @@ public class CriaUsuario extends HttpServlet {
 	 */
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	DAO dao;
-		
+    	Integer pessoa_id = Integer.parseInt(request.getParameter("id"));
 		try {
 			dao = new DAO();
 			
@@ -49,7 +49,7 @@ public class CriaUsuario extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		request.setAttribute("id", pessoa_id);
 		request.getRequestDispatcher("usersAdm.jsp").forward(request, response);
     }
     

@@ -40,7 +40,12 @@
 			
 			
 			
-	<jsp:include page="header.jsp"></jsp:include>
+		<jsp:include page="header.jsp">
+		
+		<jsp:param name="id_header" value = "<%=i%>" />
+		
+		
+		</jsp:include>
 
 <br>
 

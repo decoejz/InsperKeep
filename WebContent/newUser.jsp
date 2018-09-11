@@ -31,14 +31,21 @@
 			Integer id = Integer.parseInt(request.getParameter("id"));
 			Integer i = id;%>
 			
-	<jsp:include page="header.jsp"></jsp:include>
+		<jsp:include page="header.jsp">
+		
+		<jsp:param name="id_header" value = "<%=i%>" />
+		
+		
+		</jsp:include>
 
 <br>
 
 
 <form action="CriaUsuario">
 
-			<div class="form-group">		 	
+			<div class="form-group">
+			
+			<input type="hidden" name="id" value="<%=i%>" />		 	
 			<label for="title_id"><b>Login *</b></label>
 			<input type="text" class="form-control" id="title_id" name="login" required>
 			
@@ -57,12 +64,18 @@
 			<p>1 - Caso seja administrador.</p>
 			</div>
 			
-			<a href="home.jsp"><button class="btn btn-sm btn-success" type="submit">Gravar</button></a>
-			<a href="home.jsp"><button class="btn btn-sm btn-secondary" type="button">Cancelar</button></a>
+			<a href="home.jsp"><button class="btn btn-outline-success btn-lg btn-block" type="submit">Gravar</button></a>
+
 <!-- 			<a href="home.jsp"><input type="submit" value="Enviar"></a>
 			<a href="home.jsp"><input type="button" value="Cancelar"></a> -->
-		</form>
 		
+		
+		</form>
+		<form action="RedirectUserAdm">
+			<input type="hidden" name="id" value="<%=i%>" />
+						
+						<button class="btn btn-outline-danger btn-lg btn-block" type="submit">Cancelar</button>
+					</form>
 
 	</div>
 
