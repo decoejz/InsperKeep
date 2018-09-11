@@ -25,6 +25,10 @@
 	<%@ page import="java.util.*,br.edu.insper.*"%>
 	
 	<div class="container">
+				<%
+				String i = request.getParameter("id");
+				Integer i_int = Integer.parseInt(i);
+			%>
 	<jsp:include page="header.jsp"></jsp:include>
 
 <br>
@@ -32,10 +36,10 @@
 
 <form action="CriaNota">
 			<!-- TODO: Passar os ids da nota e da pessoa aqui -->
-			<%
-			Integer id = Integer.parseInt(request.getParameter("id"));%>
+
 			
-			<input type="hidden" name="pessoa_id" value="<%=id%>" />
+			
+			<input type="hidden" name="pessoa_id" value="<%=i_int%>" />
 		
 			<div class="form-group">
 			  <label for="title_id"><b>Título da nota *</b></label>
@@ -48,18 +52,17 @@
 			<label for="descricao"><b>Texto da nota *</b></label>
 			<textarea class = "textarea_1 form-control" rows="5" cols="111" name="novaNota" id ="descricao" required></textarea><br><br>
 			</div>
-			<a href="home.jsp"><button class="btn btn-sm btn-success" type="submit">Gravar</button></a>
-			
-			
-			
-			
-			<%String link = "home.jsp?id="; 
-			link+= id;%>
-			<a href=<%=link%>><button class="btn btn-sm btn-secondary" type="submit">Cancelar</button></a>
+			<a href="home.jsp"><button class="btn btn-outline-success btn-lg btn-block" type="submit">Gravar</button></a>
+		
 <!-- 			<a href="home.jsp"><input type="submit" value="Enviar"></a>
 			<a href="home.jsp"><input type="button" value="Cancelar"></a> -->
 		</form>
 		
+			<form action="RedirectUser">
+			<input type="hidden" name="id" value="<%=i_int%>" />
+						
+						<button class="btn btn-outline-danger btn-lg btn-block" type="submit">Cancelar</button>
+					</form>
 
 	</div>
 

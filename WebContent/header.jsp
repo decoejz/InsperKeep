@@ -10,13 +10,38 @@
 
 			</ul>
 			
+			
+			
+			
 			<% 
-			String i = "a";
-			String link = "usersAdm.jsp?id=" ;
-			link += "1";%>
+			try {
+				String a = request.getParameter("id_header");
+			%>
 			
-			<a href=<%=link%> ><button type="button">Editar users</button></a>
+			<form action="RedirectUserAdm">
+			<input type="hidden" name="id" value=<%=a%> />
+						
+						<button class="btn" type="submit">Administrar Usuários</button>
+			</form>
 			
+			
+			<%
+			
+			} catch (NullPointerException e) {
+			
+		
+/* 		    String redirectURL = "index.jsp";
+		    response.sendRedirect(redirectURL); */
+		    System.out.println("Usuário não definido");
+
+
+		}
+
+			
+ 
+			
+			
+			%>
 			<a href = "index.jsp"><span class="navbar-text buttons_nav"> Log Out </span></a>
 		</div>
 	</nav>

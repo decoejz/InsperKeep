@@ -25,6 +25,12 @@
 	<%@ page import="java.util.*,br.edu.insper.*"%>
 	
 	<div class="container">
+	
+	
+			<%
+			Integer id = Integer.parseInt(request.getParameter("id"));
+			Integer i = id;%>
+			
 	<jsp:include page="header.jsp"></jsp:include>
 
 <br>

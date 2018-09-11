@@ -33,6 +33,10 @@
 	<div class="container">
 		<%Integer pessoa_id = Integer.parseInt(request.getParameter("user_id"));%>
 		<%Integer i = Integer.parseInt(request.getParameter("id"));%>
+	
+	
+	
+	
 	<jsp:include page="header.jsp"></jsp:include>
 
 <br>

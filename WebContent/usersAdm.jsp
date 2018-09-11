@@ -28,19 +28,19 @@
 	%>
 
 
-<%-- 	<%
+	<%
 		try {
 			i = request.getAttribute("id").toString();
 		} catch (NullPointerException e) {
 			
 			/* i = "a"; */
 		
-		    String redirectURL = "user_not.jsp";
+		    String redirectURL = "index.jsp";
 		    response.sendRedirect(redirectURL);
 
 
 		}
-	%> --%>
+	%> 
 
 
 	<%
@@ -57,7 +57,7 @@
 		<%-- <h1><%= request.getAttribute("attributeKey") %></h1> --%>
 		<br> <a href=<%=link_adicionar%>><button type="button"
 				class="btn btn-outline-success btn-lg btn-block">Adicionar
-				nota</button></a>
+				Usuários</button></a>
 	
 	
 		<table class="table table-hover">

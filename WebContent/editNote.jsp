@@ -31,6 +31,15 @@
 	<%@ page import="javax.servlet.http.HttpServletResponse"%>
 	
 	<div class="container">
+	
+	
+			<% 
+			Integer id = Integer.parseInt(request.getParameter("nota_id"));
+			String i = request.getParameter("person_id");
+			Integer i_int = Integer.parseInt(i);%>
+			
+			
+			
 	<jsp:include page="header.jsp"></jsp:include>
 
 <br>
@@ -38,13 +47,10 @@
 
 <form action="EditaNota">
 			<!-- TODO: Passar os ids da nota e da pessoa aqui -->
-			<% 
-			Integer id = Integer.parseInt(request.getParameter("nota_id"));
-			
-			Integer i = Integer.parseInt(request.getParameter("person_id"));%>
+
 			
 			<input type="hidden" name="nota_id" value="<%=id%>" />
-			<input type="hidden" name="i" value="<%=i%>" />
+			<input type="hidden" name="i" value="<%=i_int%>" />
 			
 			<div class="form-group">
 			  <label for="title_id"><b>Título da nota *</b></label>
@@ -52,7 +58,7 @@
 			 	
 			<%
 					DAO dao = new DAO();
-					Nota nota = dao.getSpecificNote(id,i);
+					Nota nota = dao.getSpecificNote(id,i_int);
 				%>			 	
 			 
 			  <input type="text" class="form-control" id="title_id" name="title" required value="<%=nota.getTitle()%>">
@@ -68,8 +74,7 @@
 			
 			<%String link = "home.jsp?id="; 
 			link+= i;%>
-			<a href="home.jsp"><button class="btn btn-sm btn-success" type="submit">Gravar</button></a>
-			<a href="home.jsp"><button class="btn btn-sm btn-secondary" type="submit">Cancelar</button></a>
+			<a href="home.jsp"><button class="btn btn-outline-success btn-lg btn-block" type="submit">Gravar</button></a>
 
 
 
@@ -80,11 +85,10 @@
 		</form>
 		
 		
-						<form action="EditaNota">
-			<input type="hidden" name="nota_id" value="<%=id%>" />
-			<input type="hidden" name="i" value="<%=i%>" />
+						<form action="RedirectUser">
+			<input type="hidden" name="id" value="<%=i%>" />
 						
-						<button class="btn btn-sm btn-danger	 btn-block" type="submit">Deletar</button>
+						<button class="btn btn-outline-danger btn-lg btn-block" type="submit">Cancelar</button>
 					</form>
 		
 

@@ -53,7 +53,12 @@
 	<%String link_adicionar = "newNote.jsp?id=";
 		link_adicionar += i;
 	%>
-		<jsp:include page="header.jsp"></jsp:include>
+		<jsp:include page="header.jsp">
+		
+		<jsp:param name="id_header" value = "<%=i%>" />
+		
+		
+		</jsp:include>
 		<%-- <h1><%= request.getAttribute("attributeKey") %></h1> --%>
 		<br> <a href=<%=link_adicionar%>><button type="button"
 				class="btn btn-outline-success btn-lg btn-block">Adicionar
