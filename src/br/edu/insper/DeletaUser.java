@@ -47,10 +47,9 @@ public class DeletaUser extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		System.out.println(id + " " + personId);
+
 		
 		if (personId == id) {
-			System.out.println(id + " "  );
 			response.sendRedirect("index.jsp");
 			return;
 		}

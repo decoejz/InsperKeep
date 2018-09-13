@@ -59,7 +59,7 @@
 			<input type="email" class="form-control" id="title_id" name="email" required>
 			
 			<label for="title_id"><b>Administrador *</b></label>
-			<input type="number" min="0" max="1" name="adm" required>
+			<input type="number" min="0" max="1" name="adm" required value="0">
 			<p>0 - Caso não seja administrador</p>
 			<p>1 - Caso seja administrador.</p>
 			</div>

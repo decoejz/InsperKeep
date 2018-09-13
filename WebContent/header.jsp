@@ -1,5 +1,5 @@
 	<%@ page import="java.util.*,br.edu.insper.*"%>
-
+<link href="${pageContext.request.contextPath}/css/header.css">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="#">InsperKeep</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -36,7 +36,7 @@
 		<form action="RedirectUser">
 			<input type="hidden" name="id" value=<%=a%> />
 		
-		<button class="btn" type="submit">Gerenciador Notas</button>
+		<button class="btn insperkeep_home" type="submit">Gerenciador Notas</button>
 			</form>
 			
 			
